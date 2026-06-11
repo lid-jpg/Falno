@@ -15,7 +15,7 @@
             --border: #262d3d;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
 
         body {
             background-color: var(--bg-main);
@@ -49,9 +49,9 @@
         .feature-card { background-color: var(--bg-card); border: 1px solid var(--border); padding: 1.5rem; border-radius: 12px; }
         .feature-img { width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem; display: block; }
 
-        /* --- DOCS SHARED STYLES --- */
-        .privacy-content, .tos-content { max-width: 760px; margin: 0 auto; padding: 2rem 0; color: #e8e6e1; }
-        .privacy-header, .tos-header { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 3rem; }
+        /* --- PRIVACY & TOS SHARED SCOPED STYLES --- */
+        .doc-wrapper { max-width: 760px; margin: 0 auto; padding: 2rem 0; }
+        .doc-header { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 3rem; }
         .doc-logo { width: 48px; height: 48px; background: linear-gradient(135deg, #5865F2 0%, #3b47c9 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
         .badge { margin-left: auto; background: #1a1a24; border: 1px solid #2a2a38; color: #888; font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; }
         .intro-card { background: #12121a; border: 1px solid #1e1e2e; border-left: 3px solid #5865F2; border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 3rem; font-size: 0.95rem; color: #aaa; }
@@ -90,16 +90,14 @@
                 <p>An ultra-optimized, lightweight community suite.</p>
                 <a href="https://discord.com/oauth2/authorize?client_id=1277818863316238378" target="_blank" class="btn">Add Falno to Discord</a>
             </div>
-
             <div class="features-grid">
                 <div class="feature-card">
-                    <img src="YouTube_exemple.png" alt="YouTube Alerts" class="feature-img" loading="lazy">
+                    <img src="YouTube_exemple.png" alt="YouTube" class="feature-img" loading="lazy">
                     <h3>🔔 YouTube Alerts</h3>
                     <p>Track your content updates seamlessly.</p>
                 </div>
                 <div class="feature-card">
-                    <img src="confessions.png" alt="Confessions Suite" class="feature-img" loading="lazy">
-                    <img src="review.png" alt="Confessions Review" class="feature-img" loading="lazy">
+                    <img src="confessions.png" alt="Confessions" class="feature-img" loading="lazy">
                     <h3>🤫 Confessions Suite</h3>
                     <p>Secure and anonymous community feedback.</p>
                 </div>
@@ -108,81 +106,218 @@
                     <h3>🎲 Truth or Dare</h3>
                     <p>Classic games for your server members.</p>
                 </div>
-                <div class="feature-card">
-                    <img src="Jokes.png" alt="Jokes" class="feature-img" loading="lazy">
-                    <img src="CMD_jokes.png" alt="Jokes Commands" class="feature-img" loading="lazy">
-                    <h3>🎭 Jokes Command</h3>
-                    <p>Humor categories at your fingertips.</p>
-                </div>
-                <div class="feature-card">
-                    <img src="facts_miniGames.png" alt="Facts" class="feature-img" loading="lazy">
-                    <img src="MiniGames.png" alt="MiniGames" class="feature-img" loading="lazy">
-                    <h3>🎮 Mini-Games & Facts!</h3>
-                    <p>Engage your users with fun facts and games.</p>
-                </div>
             </div>
         </section>
 
         <section id="privacy" class="page-section">
-            <div class="privacy-content">
-                <div class="privacy-header">
+            <div class="doc-wrapper">
+                <div class="doc-header">
                     <div class="doc-logo">⚡</div>
-                    <div>
-                        <h1>Falno Bot</h1>
-                        <p style="color: #888; font-size: 0.85rem;">Privacy Policy</p>
-                    </div>
+                    <div><h1>Falno Bot</h1><p>Privacy Policy</p></div>
                     <div class="badge">Effective: June 11, 2026</div>
                 </div>
+
                 <div class="intro-card">
                     This Privacy Policy explains what data <strong>Falno Bot</strong> collects, how it is used, and how it is protected. By adding Falno to your Discord server or using any of its commands, you agree to this policy.
                 </div>
+
                 <section>
                     <div class="section-label">01</div>
                     <h2>Who we are</h2>
-                    <p>Falno Bot ("Falno", "the bot", "we") is a Discord bot developed and operated by <strong>FallenDev</strong>, an independent developer.</p>
+                    <p>Falno Bot ("Falno", "the bot", "we") is a Discord bot developed and operated by <strong> an </strong>, an independent developer. Falno is a public bot available to any Discord server.</p>
                 </section>
                 <div class="divider"></div>
                 <section>
                     <div class="section-label">02</div>
                     <h2>What data we collect</h2>
-                    <p>Falno collects only what is strictly necessary to deliver its features.</p>
+                    <p>Falno collects only what is strictly necessary to deliver its features. We do not collect personal information beyond what Discord provides during interactions.</p>
                     <div class="highlight-box">
-                        <p><strong style="color:#f0eeea;">Server-level data</strong></p>
+                        <p><strong style="color:#f0eeea;">Server-level data (stored persistently)</strong></p>
                         <ul>
-                            <li>Discord Server (Guild) IDs</li>
-                            <li>Discord Channel IDs</li>
-                            <li>YouTube channel IDs and names</li>
-                            <li>ID of last notified YouTube video</li>
+                            <li>Discord Server (Guild) IDs — to associate settings with a server</li>
+                            <li>Discord Channel IDs — to know where to post notifications, quotes, Truth or Dare, or confessions</li>
+                            <li>YouTube channel IDs and names — for the YouTube notifier feature</li>
+                            <li>The ID of the last notified YouTube video — to avoid duplicate notifications</li>
+                            <li>Custom notification messages configured by server admins</li>
+                        </ul>
+                    </div>
+                    <div class="highlight-box" style="margin-top: 0.75rem;">
+                        <p><strong style="color:#f0eeea;">Confessions system data (stored temporarily)</strong></p>
+                        <ul>
+                            <li>Discord User IDs of confession authors — stored only to enforce bans, never displayed publicly</li>
+                            <li>Confession and reply text submitted through the anonymous confession modal</li>
+                            <li>Optional image URLs attached to confessions</li>
+                            <li>Confession ban records (User ID + reason + timestamp), identified by an opaque ID (e.g. CB-0001)</li>
+                        </ul>
+                    </div>
+                    <div class="highlight-box" style="margin-top: 0.75rem;">
+                        <p><strong style="color:#f0eeea;">Transient data (never stored)</strong></p>
+                        <ul>
+                            <li>Message content of regular chat messages (the bot does not read or log general messages)</li>
+                            <li>Usernames, display names, or avatars (used only in real-time for embeds, never saved)</li>
+                            <li>Command inputs for fun commands (jokes, dice, 8-ball, facts, etc.)</li>
                         </ul>
                     </div>
                 </section>
-                </div>
+                <div class="divider"></div>
+                <section>
+                    <div class="section-label">03</div>
+                    <h2>How we use your data</h2>
+                    <p>Data collected by Falno is used exclusively to operate the bot's features:</p>
+                    <ul>
+                        <li>Delivering YouTube upload notifications to the correct Discord channels</li>
+                        <li>Sending daily quotes and Truth or Dare prompts to subscribed servers</li>
+                        <li>Operating the anonymous confessions system, including moderation tools (review, ban)</li>
+                        <li>Automatically cleaning up references to deleted Discord channels</li>
+                    </ul>
+                    <p>We do not use your data for advertising, analytics, profiling, or any purpose unrelated to the bot's functionality.</p>
+                </section>
+                <div class="divider"></div>
+                <section>
+                    <div class="section-label">04</div>
+                    <h2>Data storage and security</h2>
+                    <p>All data is stored in local JSON files on the server where Falno is hosted. Data is written asynchronously and protected against race conditions using file-level locks.</p>
+                    <p>We take reasonable precautions to protect stored data.</p>
+                    <p>Data is retained as long as your server has Falno installed and the relevant feature is enabled. Removing a feature (e.g. <code>/removeconfess</code>) deletes the associated data for your server. Removing Falno from your server does not automatically delete your server's stored data — contact us to request deletion.</p>
+                </section>
+                <div class="divider"></div>
+                <section>
+                    <div class="section-label">05</div>
+                    <h2>Anonymous confessions and privacy</h2>
+                    <p>The confessions feature is designed to protect user anonymity. Confession authors are never identified publicly. However, <strong style="color:#f0eeea;">the following limitations apply</strong>:</p>
+                    <ul>
+                        <li>A user's Discord User ID is stored internally to enable confession bans. This ID is accessible only to us, not to server moderators.</li>
+                        <li>Server moderators can see the text of a confession before it is approved (if a review channel is configured), but they cannot see who submitted it.</li>
+                        <li>Discord itself may log interactions at the platform level. This is outside our control. See Discord's <a href="https://discord.com/privacy" style="color:#7289da;">Privacy Policy</a>.</li>
+                        <li>Falno cannot guarantee anonymity if a confession contains self-identifying information.</li>
+                    </ul>
+                </section>
+                <div class="divider"></div>
+                <section>
+                    <div class="section-label">06</div>
+                    <h2>Children's privacy</h2>
+                    <p>Falno is not directed at children under the age of 13 (or the minimum age required to use Discord in your jurisdiction).</p>
+                </section>
+                <div class="divider"></div>
+                <section>
+                    <div class="section-label">08</div>
+                    <h2>Your rights</h2>
+                    <p>You may request the deletion of any data associated with your server or user account by contacting us. We will fulfill deletion requests within a reasonable timeframe.</p>
+                    <p>Because confessions are stored without a public link to your identity, deletion of confession data may require verification.</p>
+                </section>
+                <div class="divider"></div>
+                <section>
+                    <div class="section-label">09</div>
+                    <h2>Changes to this policy</h2>
+                    <p>We may update this Privacy Policy from time to time. The "Effective" date at the top of this page will reflect the most recent update. Continued use of Falno after changes constitutes acceptance of the revised policy.</p>
+                </section>
+            </div>
         </section>
 
         <section id="terms" class="page-section">
-            <div class="tos-content">
-                <div class="tos-header">
+            <div class="doc-wrapper">
+                <div class="doc-header">
                     <div class="doc-logo">📜</div>
-                    <div>
-                        <h1>Falno Bot</h1>
-                        <p style="color: #888; font-size: 0.85rem;">Terms of Service</p>
-                    </div>
+                    <div><h1>Falno Bot</h1><p>Terms of Service</p></div>
                     <div class="badge">Effective: June 11, 2026</div>
                 </div>
+
                 <div class="intro-card">
-                    By adding <strong>Falno Bot</strong> to your Discord server or using any of its features, you agree to these Terms of Service.
+                    By adding <strong>Falno Bot</strong> to your Discord server or using any of its features, you agree to these Terms of Service. If you do not agree, please remove the bot from your server and discontinue use.
                 </div>
+
                 <section>
                     <div class="section-label">01</div>
                     <h2>About Falno</h2>
-                    <p>Falno Bot is a Discord bot developed by <strong>FallenDev</strong>.</p>
+                    <p>Falno Bot ("Falno", "the bot") is a Discord bot developed by <strong style="color:#f0eeea;">FallenDev</strong>, an independent developer. Falno provides YouTube upload notifications, fun commands, a daily Quote of the Day, Truth or Dare, and an anonymous confessions system.</p>
+                    <p>Falno is provided free of charge, as-is, for personal and community use on Discord servers.</p>
                 </section>
-                </div>
+                <div class="divider"></div>
+                <section>
+                    <div class="section-label">02</div>
+                    <h2>Eligibility</h2>
+                    <p>You must meet Discord's minimum age requirement (13 years old, or older depending on your country) to use Falno. By using the bot, you confirm that you meet this requirement.</p>
+                    <p>Server administrators who add Falno to their server are responsible for ensuring their members comply with these Terms.</p>
+                </section>
+                <div class="divider"></div>
+                <section>
+                    <div class="section-label">03</div>
+                    <h2>Acceptable use</h2>
+                    <p>You agree to use Falno only for lawful purposes and in a manner consistent with Discord's <a href="https://discord.com/terms" style="color:#7289da;">Terms of Service</a> and <a href="https://discord.com/guidelines" style="color:#7289da;">Community Guidelines</a>.</p>
+                    <p>The following uses are strictly prohibited:</p>
+                    <ul>
+                        <li>Using the confessions feature to harass, threaten, defame, or harm other users</li>
+                        <li>Submitting illegal content, including content that violates copyright, privacy, or local laws</li>
+                        <li>Attempting to abuse, exploit, or circumvent bot features (e.g. bypassing confession bans)</li>
+                        <li>Using the bot to spam, flood, or disrupt Discord servers</li>
+                        <li>Using the bot for any commercial purpose without explicit written permission from us</li>
+                    </ul>
+                    <div class="warning-box">
+                        <p><strong>Confessions:</strong> The anonymous confessions feature must not be used to harm others. Server moderators are responsible for moderating their confession channels. We are not liable for the content of confessions submitted by users.</p>
+                    </div>
+                </section>
+                <div class="divider"></div>
+                <section>
+                    <div class="section-label">04</div>
+                    <h2>Server administrator responsibilities</h2>
+                    <p>By adding Falno to your server, the server owner and administrators agree to:</p>
+                    <ul>
+                        <li>Configure features responsibly and in a manner appropriate for their community</li>
+                        <li>Moderate the confessions channel, including using the review system and banning abusive users when necessary</li>
+                        <li>Ensure Falno is not used to violate the rights or safety of server members</li>
+                        <li>Provide their members with clear information about which features are enabled and how they work</li>
+                    </ul>
+                </section>
+                <div class="divider"></div>
+                <section>
+                    <div class="section-label">05</div>
+                    <h2>Availability and modifications</h2>
+                    <p>Falno is provided on a best-effort basis. We do not guarantee uninterrupted availability. The bot may be offline for maintenance, updates, or due to issues beyond our control (e.g. Discord API outages).</p>
+                    <p>We reserve the right to modify, suspend, or discontinue Falno or any of its features at any time, with or without notice.</p>
+                    <p>We reserve the right to remove Falno from any server that violates these Terms.</p>
+                </section>
+                <div class="divider"></div>
+                <section>
+                    <div class="section-label">06</div>
+                    <h2>Disclaimer of warranties</h2>
+                    <p>Falno is provided <strong style="color:#f0eeea;">"as is"</strong> and <strong style="color:#f0eeea;">"as available"</strong> without warranties of any kind, express or implied. We do not warrant that:</p>
+                    <ul>
+                        <li>The bot will be error-free or available at all times</li>
+                        <li>YouTube notifications will be delivered within any specific time frame</li>
+                        <li>The confessions system is completely secure or anonymous in all circumstances</li>
+                    </ul>
+                </section>
+                <div class="divider"></div>
+                <section>
+                    <div class="section-label">07</div>
+                    <h2>Limitation of liability</h2>
+                    <p>To the fullest extent permitted by applicable law, FallenDev shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of Falno, including but not limited to:</p>
+                    <ul>
+                        <li>Missed YouTube notifications or delayed alerts</li>
+                        <li>Content posted by users through the confessions feature</li>
+                        <li>Data loss resulting from bot downtime or file corruption</li>
+                        <li>Actions taken by server administrators using bot commands</li>
+                    </ul>
+                </section>
+                <div class="divider"></div>
+                <section>
+                    <div class="section-label">08</div>
+                    <h2>Property</h2>
+                    <p>Content submitted by users through Falno (e.g. confessions, custom notification messages) remains the property of the respective user. By submitting content, you grant us a limited license to store and display that content solely for the purpose of operating the bot's features.</p>
+                </section>
+                <div class="divider"></div>
+                <section>
+                    <div class="section-label">09</div>
+                    <h2>Changes to these terms</h2>
+                    <p>We may update these Terms of Service at any time. The "Effective" date at the top of this page reflects the most recent update. Continued use of Falno after changes are posted constitutes your acceptance of the revised Terms.</p>
+                    <p>We recommend checking this page periodically for updates.</p>
+                </section>
+            </div>
         </section>
     </main>
 
     <footer>
-        &copy; 2026 Falno. Built with optimization in mind.
+        &copy; 2026 · Falno Bot
     </footer>
 
     <script>
@@ -193,8 +328,8 @@
             
             let targetSection = document.querySelector(hash);
             if (!targetSection) {
-                window.location.hash = '#home';
                 targetSection = document.getElementById('home');
+                window.location.hash = '#home';
             }
 
             sections.forEach(s => s.classList.remove('active'));
@@ -209,8 +344,6 @@
         }
 
         window.addEventListener('hashchange', router);
-        // Note: We don't necessarily need router() on load if we set class="active" in HTML, 
-        // but we keep it for hash deep-linking support.
         window.addEventListener('load', router);
     </script>
 </body>
