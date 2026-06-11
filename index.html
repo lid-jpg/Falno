@@ -57,7 +57,14 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
+        }
+
+        .nav-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px; /* Adjust to 50% for circular logo */
+            object-fit: cover;
         }
 
         .logo span {
@@ -91,7 +98,7 @@
         }
 
         .page-section {
-            display: none; /* Controlled by JavaScript hash matching */
+            display: none;
             animation: fadeIn 0.3s ease-in-out;
         }
 
@@ -153,6 +160,16 @@
             border: 1px solid var(--border);
             padding: 1.5rem;
             border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .feature-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            background-color: #0f1115; /* Fallback color */
         }
 
         .feature-card h3 {
@@ -163,44 +180,6 @@
         .feature-card p {
             color: var(--text-muted);
             font-size: 0.95rem;
-        }
-
-        /* Document Styling (Privacy/Terms) */
-        .doc-panel {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 2.5rem;
-            border-radius: 16px;
-        }
-
-        .doc-panel h2 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 0.5rem;
-        }
-
-        .doc-panel .date {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-        }
-
-        .doc-panel h4 {
-            font-size: 1.2rem;
-            margin: 1.5rem 0 0.5rem 0;
-            color: var(--accent);
-        }
-
-        .doc-panel ul {
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-muted);
-        }
-
-        .doc-panel p {
-            color: var(--text-muted);
-            margin-bottom: 1rem;
         }
 
         /* Footer Layout */
@@ -219,7 +198,10 @@
 
     <header>
         <div class="nav-container">
-            <a href="#home" class="logo">⚡ Falno<span>.</span></a>
+            <a href="#home" class="logo">
+                <img src="path-to-your-logo.png" alt="Falno" class="nav-logo">
+                Falno<span>.</span>
+            </a>
             <nav>
                 <a href="#home" id="nav-home">Home</a>
                 <a href="#privacy" id="nav-privacy">Privacy Policy</a>
@@ -234,66 +216,29 @@
             <div class="hero">
                 <h1>Meet <span>Falno</span></h1>
                 <p>An ultra-optimized, lightweight community suite designed to consolidate your server features without the bot bloat.</p>
-                <a href="#" target="_blank" class="btn">Add Falno to Discord</a>
+                <a href="https://discord.com/oauth2/authorize?client_id=1277818863316238378" target="_blank" class="btn">Add Falno to Discord</a>
             </div>
 
             <div class="features-grid">
                 <div class="feature-card">
+                    <img src="path-to-feature-1.png" alt="YouTube Alerts" class="feature-img">
                     <h3>🔔 YouTube Alerts</h3>
                     <p>Highly optimized uploads tracker using ultra-frugal quota routing to deliver instant notification embeds.</p>
                 </div>
                 <div class="feature-card">
+                    <img src="path-to-feature-2.png" alt="Confessions Suite" class="feature-img">
                     <h3>🤫 Confessions Suite</h3>
                     <p>Interactive configuration modals featuring full moderator authorization approval workflows.</p>
                 </div>
                 <div class="feature-card">
+                    <img src="path-to-feature-3.png" alt="Interactive Games" class="feature-img">
                     <h3>🎲 Interactive Games</h3>
                     <p>Persistent self-cleaning Truth or Dare engines, daily quote broadcasts, and classic chat mini-games.</p>
                 </div>
             </div>
         </section>
 
-        <section id="privacy" class="page-section">
-            <div class="doc-panel">
-                <h2>Privacy Policy</h2>
-                <div class="date">Last Updated: June 2026</div>
-                
-                <h4>1. What Data We Collect</h4>
-                <p>Falno operates on a minimal data layout model to maximize processing efficiency and protect user data structure isolation:</p>
-                <ul>
-                    <li><strong>Server & Channel IDs:</strong> Saved uniquely to bind active notification hubs, confession routes, and daily global broadcasts.</li>
-                    <li><strong>YouTube Channel IDs:</strong> Stored to pass to deduplicated polling maps for background update sweeps.</li>
-                    <li><strong>Transient Interaction Footprints:</strong> Session data generated by interactive UI components (such as Truth or Dare button instances) is processed entirely within ephemeral context windows and never committed to disk storage.</li>
-                </ul>
-
-                <h4>2. What We Do Not Collect</h4>
-                <p>We believe in absolute data minimization. Falno explicitly bypasses the caching or tracking of standard messaging arrays. Real user metadata belongs exclusively to you; user identities for anonymous confession records are scrubbed completely prior to execution serialization.</p>
-
-                <h4>3. Data Integrity & Removal</h4>
-                <p>Data maps are isolated securely and never exposed to secondary platforms. If you wish to wipe your configuration data maps entirely, removing the bot from your guild will invoke automated cleanup cycles that securely drop obsolete configurations from our system maps.</p>
-            </div>
-        </section>
-
-        <section id="terms" class="page-section">
-            <div class="doc-panel">
-                <h2>Terms of Service</h2>
-                <div class="date">Last Updated: June 2026</div>
-
-                <h4>1. Acceptance of Terms</h4>
-                <p>By connecting Falno to your active Discord spaces or executing its runtime utilities, you explicitly agree to conform to these Terms of Service alongside the standard Discord Community Guidelines.</p>
-
-                <h4>2. Operational Bound Rules</h4>
-                <p>Users agree to refrain from exploiting any component of the system to orchestrate distributed service disruptions, spam concurrent API request nodes, or leverage the anonymous translation hooks to execute targeted harassment actions against other individuals.</p>
-
-                <h4>3. Liability Disclaimer</h4>
-                <p>Falno is deployed completely on an "as-is" structural configuration model. The development ecosystem holds no liability for down-time disruptions resulting from upstream API modifications, host connectivity cycles, or unmoderated content delivered via active deployment setups.</p>
-
-                <h4>4. Access Revocation</h4>
-                <p>The system operator reserves the absolute right to drop data links or implement network restrictions against any guild configuration found intentionally compromising active operations.</p>
-            </div>
-        </section>
-
-    </main>
+        </main>
 
     <footer>
         &copy; 2026 Falno Bot. Built with optimization in mind.
@@ -301,10 +246,7 @@
 
     <script>
         function router() {
-            // Default to #home if no hash or invalid hash is supplied
             const hash = window.location.hash || '#home';
-            
-            // Query sections and navigation elements
             const sections = document.querySelectorAll('.page-section');
             const navLinks = document.querySelectorAll('nav a');
             
@@ -314,7 +256,6 @@
                 return;
             }
 
-            // Toggle active states efficiently
             sections.forEach(s => s.classList.remove('active'));
             navLinks.forEach(l => l.classList.remove('active'));
 
@@ -323,14 +264,11 @@
             const activeNav = document.getElementById(`nav-${hash.replace('#', '')}`);
             if (activeNav) activeNav.classList.add('active');
 
-            // Instantly scroll back to the top of the viewport on tab switch
             window.scrollTo(0, 0);
         }
 
-        // Run router on initial document load and whenever the URL hash changes
         window.addEventListener('hashchange', router);
         window.addEventListener('load', router);
     </script>
 </body>
 </html>
-
