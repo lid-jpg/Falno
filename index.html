@@ -3,25 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Falno Bot — Multi-Tool Discord Suite</title>
+    <title>Falno — Multi-Tool Discord Suite</title>
     <style>
-        /* Modern Discord Dark Aesthetic */
         :root {
             --bg-main: #0f1115;
             --bg-card: #181c25;
-            --accent: #5865F2; /* Discord Blurple */
+            --accent: #5865F2;
             --accent-hover: #4752C4;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
             --border: #262d3d;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
         body {
             background-color: var(--bg-main);
@@ -32,166 +26,43 @@
             min-height: 100vh;
         }
 
-        /* Navbar Layout */
-        header {
-            background-color: var(--bg-card);
-            border-bottom: 1px solid var(--border);
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        /* Navbar */
+        header { background-color: var(--bg-card); border-bottom: 1px solid var(--border); padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
+        .nav-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 0.75rem; }
+        .nav-logo { width: 32px; height: 32px; border-radius: 6px; object-fit: cover; }
+        .logo span { color: var(--accent); }
+        nav { display: flex; gap: 1.5rem; }
+        nav a { color: var(--text-muted); text-decoration: none; font-weight: 500; cursor: pointer; transition: color 0.2s; }
+        nav a:hover, nav a.active { color: var(--text-main); }
+
+        /* Main Content */
+        main { max-width: 900px; width: 100%; margin: 0 auto; padding: 3rem 2rem; flex-grow: 1; }
+        .page-section { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .page-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Hero & Grid */
+        .hero { text-align: center; padding: 4rem 0; }
+        .btn { background-color: var(--accent); color: white; padding: 0.8rem 2rem; border-radius: 8px; text-decoration: none; display: inline-block; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .feature-card { background-color: var(--bg-card); border: 1px solid var(--border); padding: 1.5rem; border-radius: 12px; }
+        
+        /* Fixed Image Issue: Removed fixed height, changed to auto */
+        .feature-img { 
+            width: 100%; 
+            height: auto; 
+            border-radius: 8px; 
+            margin-bottom: 1rem; 
+            display: block; 
         }
 
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        /* Doc Panels */
+        .doc-panel { background-color: var(--bg-card); border: 1px solid var(--border); padding: 2.5rem; border-radius: 16px; }
+        .doc-panel h2 { margin-bottom: 1rem; color: var(--accent); }
+        .doc-panel p { color: var(--text-muted); margin-bottom: 1rem; }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-main);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .nav-logo {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px; /* Adjust to 50% for circular logo */
-            object-fit: cover;
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        nav {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-            cursor: pointer;
-        }
-
-        nav a:hover, nav a.active {
-            color: var(--text-main);
-        }
-
-        /* Core Content Container */
-        main {
-            max-width: 900px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-            flex-grow: 1;
-        }
-
-        .page-section {
-            display: none;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-
-        .page-section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Home Page/Landing Styling */
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 2.5rem auto;
-        }
-
-        .btn {
-            background-color: var(--accent);
-            color: white;
-            padding: 0.8rem 2rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: background-color 0.2s;
-            display: inline-block;
-            box-shadow: 0 4px 14px rgba(88, 101, 242, 0.3);
-        }
-
-        .btn:hover {
-            background-color: var(--accent-hover);
-        }
-
-        /* Feature Matrix Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 1.5rem;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .feature-img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            background-color: #0f1115; /* Fallback color */
-        }
-
-        .feature-card h3 {
-            margin-bottom: 0.5rem;
-            color: var(--text-main);
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Footer Layout */
-        footer {
-            background-color: var(--bg-card);
-            border-top: 1px solid var(--border);
-            text-align: center;
-            padding: 1.5rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: auto;
-        }
+        footer { background-color: var(--bg-card); border-top: 1px solid var(--border); text-align: center; padding: 1.5rem; color: var(--text-muted); font-size: 0.9rem; }
     </style>
 </head>
 <body>
@@ -211,7 +82,7 @@
     </header>
 
     <main>
-        
+        <!-- Home Section -->
         <section id="home" class="page-section">
             <div class="hero">
                 <h1>Meet <span>Falno</span></h1>
@@ -223,37 +94,53 @@
                 <div class="feature-card">
                     <img src="YouTube_exemple.png" alt="YouTube Alerts" class="feature-img">
                     <h3>🔔 YouTube Alerts</h3>
-                    <p>.</p>
+                    <p>Track your content updates seamlessly.</p>
                 </div>
                 <div class="feature-card">
                     <img src="confessions.png" alt="Confessions Suite" class="feature-img">
-                    <img src="review.png" alt="Confessions Suite" class="feature-img">
+                    <img src="review.png" alt="Confessions Review" class="feature-img">
                     <h3>🤫 Confessions Suite</h3>
-                    <p>.</p>
+                    <p>Secure and anonymous community feedback.</p>
                 </div>
                 <div class="feature-card">
                     <img src="Tod.png" alt="Truth or Dare" class="feature-img">
                     <h3>🎲 Truth or Dare</h3>
-                    <p>.</p>
+                    <p>Classic games for your server members.</p>
                 </div>
                 <div class="feature-card">
-                    <img src="Jokes.png" alt="Jokes Command With Categories" class="feature-img">
-                    <img src="CMD_jokes.png" alt="Jokes Command With Categories" class="feature-img">
-                    <h3>🎭 Jokes Command With Categories</h3>
-                    <p>.</p>
+                    <img src="Jokes.png" alt="Jokes" class="feature-img">
+                    <img src="CMD_jokes.png" alt="Jokes Commands" class="feature-img">
+                    <h3>🎭 Jokes Command</h3>
+                    <p>Humor categories at your fingertips.</p>
                 </div>
                 <div class="feature-card">
-                    <img src="facts_miniGames.png" alt="Mini-Games & Facts!" class="feature-img">
-                    <img src="MiniGames.png" alt="Mini-Games & Facts!" class="feature-img">
+                    <img src="facts_miniGames.png" alt="Facts" class="feature-img">
+                    <img src="MiniGames.png" alt="MiniGames" class="feature-img">
                     <h3>🎮 Mini-Games & Facts!</h3>
-                    <p>.</p>
+                    <p>Engage your users with fun facts and games.</p>
+                </div>
             </div>
         </section>
 
-        </main>
+        <!-- Privacy Section (Restored) -->
+        <section id="privacy" class="page-section">
+            <div class="doc-panel">
+                <h2>Privacy Policy</h2>
+                <p>Falno operates with strict data minimization. We only collect the necessary IDs to function.</p>
+            </div>
+        </section>
+
+        <!-- Terms Section (Restored) -->
+        <section id="terms" class="page-section">
+            <div class="doc-panel">
+                <h2>Terms of Service</h2>
+                <p>By using Falno, you agree to comply with Discord's Community Guidelines.</p>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        &copy; 2026 Falno.
+        &copy; 2026 Falno. Built with optimization in mind.
     </footer>
 
     <script>
