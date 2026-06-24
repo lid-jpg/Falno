@@ -190,9 +190,9 @@
                 <section>
                     <div class="section-label">04</div>
                     <h2>Data storage and security</h2>
-                    <p>All data is stored in local JSON files on the server where Falno is hosted. Data is written asynchronously and protected against race conditions using file-level locks.</p>
+                    <p>All data is stored in a postgreSQL database. Data is written asynchronously and protected against race conditions.</p>
                     <p>We take reasonable precautions to protect stored data.</p>
-                    <p>Data is retained as long as your server has Falno installed and the relevant feature is enabled. Removing a feature (e.g. <code>/removeconfess</code>) deletes the associated data for your server. Removing Falno from your server does not automatically delete your server's stored data — contact us to request deletion.</p>
+                    <p>Data is retained as long as your server has Falno installed and the relevant feature is enabled. Removing a feature (e.g. <code>/removeconfess</code>) deletes the associated data for your server. Removing Falno from your server automatically delete your server's stored data.</p>
                 </section>
                 <div class="divider"></div>
                 <section>
@@ -214,14 +214,9 @@
                 </section>
                 <div class="divider"></div>
                 <section>
-                    <div class="section-label">07</div>
-                    <h2>Your rights</h2>
-                    <p>You may request the deletion of any data associated with your server or user account by contacting us. We will fulfill deletion requests within a reasonable timeframe.</p>
-                    <p>Because confessions are stored without a public link to your identity, deletion of confession data may require verification.</p>
-                </section>
                 <div class="divider"></div>
                 <section>
-                    <div class="section-label">08</div>
+                    <div class="section-label">07</div>
                     <h2>Changes to this policy</h2>
                     <p>We may update this Privacy Policy from time to time. The "Effective" date at the top of this page will reflect the most recent update. Continued use of Falno after changes constitutes acceptance of the revised policy.</p>
                 </section>
@@ -309,7 +304,6 @@
                     <ul>
                         <li>Missed YouTube notifications or delayed alerts</li>
                         <li>Content posted by users through the confessions feature</li>
-                        <li>Data loss resulting from bot downtime or file corruption</li>
                         <li>Actions taken by server administrators using bot commands</li>
                     </ul>
                 </section>
